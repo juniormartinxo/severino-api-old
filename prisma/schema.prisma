@@ -1,0 +1,32 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "mongodb"
+  url      = env("DATABASE_URL")
+}
+
+model Document {
+  id                 String   @id @default(auto()) @map("_id") @db.ObjectId
+  number             String
+  date               DateTime
+  time               DateTime
+  nature_code        String
+  nature_description String
+  type               DocType
+  situation          String
+  createdAt          DateTime @default(now())
+  updatedAt          DateTime @updatedAt
+
+  @@map("documents")
+}
+
+enum DocType {
+  RAT
+  BOS
+  REDS
+}
