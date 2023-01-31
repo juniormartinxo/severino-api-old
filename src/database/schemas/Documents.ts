@@ -2,10 +2,12 @@ import mongoose from 'mongoose'
 
 const Document = new mongoose.Schema({
   number: { type: String, required: true, unique: true },
-  date: { type: Date, required: true },
+  dateTime: { type: Date, required: true },
+  date: { type: String, required: true },
   time: { type: String, required: true },
   nature_code: { type: String, required: true },
   nature_description: { type: String, required: true },
+  address: { type: String, required: true },
   type: {
     type: String,
     enum: ['RAT', 'BOS', 'REDS'],
