@@ -11,7 +11,9 @@ const app = express()
 invariant(process.env.DATABASE_URL, '🔥 DATABASE_URL is required in file .env')
 
 try {
-  mongoose.connect(process.env.DATABASE_URL!)
+  mongoose.connect(process.env.DATABASE_URL!, {
+    autoIndex: true, //make this also true
+  })
 } catch (error) {
   console.log('🔥 error on connect to database', error)
 }
